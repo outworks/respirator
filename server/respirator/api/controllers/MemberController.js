@@ -6,6 +6,13 @@
  */
 
 module.exports = {
+    'login':function(req,res){
+        var result = {};
+        result.success = true;
+        result.msg = "登录成功";
+        res.json(result);
+    }
+
 	
 };
 

@@ -34,6 +34,12 @@ module.exports.routes = {
 
   '/': {
     view: 'homepage'
+  },
+  '/login':{
+    view:'login',
+    locals: {
+          layout: 'none'
+    }
   }
 
   /***************************************************************************

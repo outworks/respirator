@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <!-- Viewport mobile tag for sensible mobile support -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="ThemeBucket">
     <link rel="shortcut icon" href="#" type="image/png">
 
     <title>Login</title>
@@ -17,39 +17,83 @@
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
     <![endif]-->
+    <!--
+        Stylesheets and Preprocessors
+        ==============================
+
+        You can always bring in CSS files manually with `<link>` tags, or asynchronously
+        using a solution like AMD (RequireJS).  Or, if you like, you can take advantage
+        of Sails' conventional asset pipeline (boilerplate Gruntfile).
+
+        By default, stylesheets from your `assets/styles` folder are included
+        here automatically (between STYLES and STYLES END). Both CSS (.css) and LESS (.less)
+        are supported. In production, your styles will be minified and concatenated into
+        a single file.
+
+        To customize any part of the built-in behavior, just edit `tasks/pipeline.js`.
+        For example, here are a few things you could do:
+
+            + Change the order of your CSS files
+            + Import stylesheets from other directories
+            + Use a different or additional preprocessor, like SASS, SCSS or Stylus
+
+
+    -->
+
+
 </head>
 
-<body class="login-body">
+<body>
 
+<!-- Placed js at the end of the document so the pages load faster -->
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="js/jquery-migrate-1.2.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/modernizr.min.js"></script>
+<script src="js/jquery.nicescroll.js"></script>
+
+<script type="text/javascript" src="js/jquery.validate.min.js"></script>
+<script src="js/validation-init.js"></script>
+<!--<script src="js/jquery.form.js"></script>-->
+<!--common scripts for all pages-->
+<script src="js/scripts.js"></script>
+
+<!--gritter script-->
+<script type="text/javascript" src="js/gritter/js/jquery.gritter.js"></script>
+<script src="js/gritter/js/gritter-init.js" type="text/javascript"></script>
+<script src="script/login.js"></script>
 <div class="container">
 
-    <form class="form-signin" action="index.html">
+    <form class="form-signin" action="javascript:void()" method="post">
         <div class="form-signin-heading text-center">
             <h1 class="sign-title">Sign In</h1>
             <img src="images/login-logo.png" alt=""/>
         </div>
         <div class="login-wrap">
-            <input type="text" class="form-control" placeholder="User ID" autofocus>
-            <input type="password" class="form-control" placeholder="Password">
+            <input type="text" class="form-control" placeholder="User ID" autofocus minlength="2" type="text" required name="username">
+            <input type="password" class="form-control" placeholder="Password" minlength="2" required name="pwd">
 
             <button class="btn btn-lg btn-login btn-block" type="submit">
                 <i class="fa fa-check"></i>
             </button>
 
-            <div class="registration">
-                Not a member yet?
-                <a class="" href="registration.html">
-                    Signup
-                </a>
-            </div>
-            <label class="checkbox">
-                <input type="checkbox" value="remember-me"> Remember me
-                <span class="pull-right">
-                    <a data-toggle="modal" href="#myModal"> Forgot Password?</a>
+            <!--<div class="registration">-->
+            <!--Not a member yet?-->
+            <!--<a class="" href="registration.html">-->
+            <!--Signup-->
+            <!--</a>-->
+            <!--</div>-->
+            <!--<label class="checkbox">-->
+            <!--<input type="checkbox" value="remember-me"> Remember me-->
+            <!--<span class="pull-right">-->
+            <!--<a data-toggle="modal" href="#myModal"> Forgot Password?</a>-->
 
-                </span>
-            </label>
-
+            <!--</span>-->
+            <!--</label>-->
+            <a data-toggle="modal" href="#myModal" id="showmodel"></a>
         </div>
 
         <!-- Modal -->
@@ -60,15 +104,15 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title">Forgot Password ?</h4>
                     </div>
-                    <div class="modal-body">
-                        <p>Enter your e-mail address below to reset your password.</p>
-                        <input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
+                    <!--<div class="modal-body">-->
+                        <!--<p>Enter your e-mail address below to reset your password.</p>-->
+                        <!--<input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">-->
 
-                    </div>
-                    <div class="modal-footer">
-                        <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
-                        <button class="btn btn-primary" type="button">Submit</button>
-                    </div>
+                    <!--</div>-->
+                    <!--<div class="modal-footer">-->
+                        <!--<button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>-->
+                        <!--<button class="btn btn-primary" type="button">Submit</button>-->
+                    <!--</div>-->
                 </div>
             </div>
         </div>
@@ -80,12 +124,56 @@
 
 
 
-<!-- Placed js at the end of the document so the pages load faster -->
 
-<!-- Placed js at the end of the document so the pages load faster -->
-<script src="js/jquery-1.10.2.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/modernizr.min.js"></script>
+<!--
+    Client-side Templates
+    ========================
+
+    HTML templates are important prerequisites of modern, rich client applications.
+    To work their magic, frameworks like Backbone, Angular, Ember, and Knockout require
+    that you load these templates client-side.
+
+    By default, your Gruntfile is configured to automatically load and precompile
+    client-side JST templates in your `assets/templates` folder, then
+    include them here automatically (between TEMPLATES and TEMPLATES END).
+
+    To customize this behavior to fit your needs, just edit `tasks/pipeline.js`.
+    For example, here are a few things you could do:
+
+        + Import templates from other directories
+        + Use a different template engine (handlebars, jade, dust, etc.)
+        + Internationalize your client-side templates using a server-side
+          stringfile before they're served.
+-->
+
+<!--TEMPLATES-->
+
+<!--TEMPLATES END-->
+
+
+<!--
+
+  Client-side Javascript
+  ========================
+
+  You can always bring in JS files manually with `script` tags, or asynchronously
+  on the client using a solution like AMD (RequireJS).  Or, if you like, you can
+  take advantage of Sails' conventional asset pipeline (boilerplate Gruntfile).
+
+  By default, files in your `assets/js` folder are included here
+  automatically (between SCRIPTS and SCRIPTS END).  Both JavaScript (.js) and
+  CoffeeScript (.coffee) are supported. In production, your scripts will be minified
+  and concatenated into a single file.
+
+  To customize any part of the built-in behavior, just edit `tasks/pipeline.js`.
+  For example, here are a few things you could do:
+
+      + Change the order of your scripts
+      + Import scripts from other directories
+      + Use a different preprocessor, like TypeScript
+
+-->
+
 
 </body>
 </html>

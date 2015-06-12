@@ -19,6 +19,7 @@ module.exports = {
                     var result = {};
                     result.success = true;
                     result.msg = "登录成功";
+                    req.session.authenticated = true;
                     res.json(result);
                 }else{
                     var result = {};
@@ -29,6 +30,9 @@ module.exports = {
 
             }
         });
+    },
+    'index':function(req,res){
+        res.view('index');
     }
 };
 

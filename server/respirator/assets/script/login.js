@@ -10,7 +10,7 @@ function pageinit(){
                     $("#showmodel").click();
                 }else{
                     console.log(data.msg); //  2pm
-                    location.href ="home"
+                    location.href ="/"
                 }
             }, "json");
         return false;

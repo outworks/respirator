@@ -35,6 +35,9 @@ module.exports.routes = {
   '/': {
       controller: 'admin',action: "index"
   },
+  '/member': {
+        controller: 'member',action: "index"
+  },
   '/login':{
     view:'login',
     locals: {

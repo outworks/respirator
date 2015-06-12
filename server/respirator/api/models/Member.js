@@ -25,7 +25,9 @@ module.exports = {
 	},phone:{
 	   type:'string',
 	   size:11
-	}
+	},age:{
+          type:'string'
+    }
   }
 };
 

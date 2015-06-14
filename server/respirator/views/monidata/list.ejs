@@ -7,7 +7,7 @@
     <meta name="author" content="ThemeBucket">
     <link rel="shortcut icon" href="#" type="image/png">
 
-    <title>用户数据管理</title>
+    <title>监测数据管理</title>
 
     <!--dynamic table-->
     <link href="js/advanced-datatable/css/demo_page.css" rel="stylesheet"/>
@@ -64,8 +64,8 @@
 
         <!--sidebar nav start-->
         <ul class="nav nav-pills nav-stacked custom-nav">
-            <li class="active"><a href="member"><i class="fa fa-home"></i> <span>用户列表</span></a></li>
-            <li ><a href="data"><i class="fa fa-home"></i> <span>数据查看</span></a></li>
+            <li ><a href="member"><i class="fa fa-home"></i> <span>用户列表</span></a></li>
+            <li class="active"><a href=data"><i class="fa fa-home"></i> <span>数据查看</span></a></li>
         </ul>
         <!--sidebar nav end-->
 
@@ -88,26 +88,25 @@
     <input type="text" class="form-control" name="keyword" placeholder="Search here..."/>
 </form>
 <!--search end-->
+    <!--notification menu start -->
+    <div class="menu-right">
+        <ul class="notification-menu">
+            <li>
+                <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    <img src="images/photos/user-avatar.png" alt=""/>
+                    John Doe
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+                    <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
+                    <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
+                    <li><a href="logout"><i class="fa fa-sign-out"></i> Log Out</a></li>
+                </ul>
+            </li>
 
-<!--notification menu start -->
-<div class="menu-right">
-    <ul class="notification-menu">
-        <li>
-            <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                <img src="images/photos/user-avatar.png" alt=""/>
-                John Doe
-                <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
-                <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
-                <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
-                <li><a href="logout"><i class="fa fa-sign-out"></i> Log Out</a></li>
-            </ul>
-        </li>
-
-    </ul>
-</div>
-<!--notification menu end -->
+        </ul>
+    </div>
+    <!--notification menu end -->
 
 </div>
 <!-- header section end-->
@@ -115,11 +114,11 @@
 <!-- page heading start-->
 <div class="page-heading">
     <h3>
-        用户管理
+        监测数据管理
     </h3>
     <ul class="breadcrumb">
         <li class="active">
-            <a href="#">用户管理</a>
+            <a href="#">监测数据管理</a>
         </li>
     </ul>
 </div>
@@ -131,7 +130,7 @@
 <div class="col-sm-12">
 <section class="panel">
 <header class="panel-heading">
-    用户列表
+    监测数据列表
 </header>
 <div class="panel-body">
 <div class="adv-table">
@@ -140,10 +139,10 @@
 <tr>
     <th>用户ID</th>
     <th>用户帐号</th>
-    <th>用户昵称</th>
-    <th>生日</th>
-    <th>身高</th>
-    <th>体重</th>
+    <th>监测时间</th>
+    <th>PEF</th>
+    <th>FEV</th>
+    <th>FVC</th>
 </tr>
 </thead>
 <tbody>
@@ -180,7 +179,7 @@
 <script type="text/javascript" src="js/data-tables/DT_bootstrap.js"></script>
 <!--dynamic table initialization -->
 <!--<script src="js/dynamic_table_init.js"></script>-->
-<script src="script/member_list.js"></script>
+<script src="script/monidata_list.js"></script>
 <!--common scripts for all pages-->
 <!--<script src="js/scripts.js"></script>-->
 

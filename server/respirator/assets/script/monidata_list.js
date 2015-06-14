@@ -5,7 +5,7 @@ function pageinit(){
         "processing": true,
         "bServerSide": true,
         "bSearchable":true,
-        "sAjaxSource": "/member/list",
+        "sAjaxSource": "/monidata/list",
         "sPaginationType": "bootstrap",
         "iDisplayLength":10,
         "oLanguage": {
@@ -26,17 +26,17 @@ function pageinit(){
         },{
             "mDataProp" : "username",
             "sDefaultContent" : "" //此列默认值为""，以防数据中没有此值，DataTables加载数据的时候报错
+        },{
+            "mDataProp" : "saveTime",
+            "sDefaultContent" : "" //此列默认值为""，以防数据中没有此值，DataTables加载数据的时候报错
+        },{
+            "mDataProp" : "pef",
+            "sDefaultContent" : "" //此列默认值为""，以防数据中没有此值，DataTables加载数据的时候报错
         }, {
-            "mDataProp" : "nickname",
+            "mDataProp" : "fev1",
             "sDefaultContent" : ""
         }, {
-            "mDataProp" : "birthday",
-            "sDefaultContent" : ""
-        }, {
-            "mDataProp" : "height",
-            "sDefaultContent" : ""
-        }, {
-            "mDataProp" : "weight",
+            "mDataProp" : "fvc",
             "sDefaultContent" : ""
         }]
     });

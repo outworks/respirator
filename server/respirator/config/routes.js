@@ -33,17 +33,23 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': {
-      controller: 'admin',action: "index"
+      controller: 'member',action: "index"
   },
   '/member': {
         controller: 'member',action: "index"
+  },
+  '/data': {
+        controller: 'monidata',action: "index"
   },
   '/login':{
     view:'login',
     locals: {
           layout: 'none'
     }
-  }
+  },
+    '/logout':{
+        controller:'admin',action:'logout'
+    }
 
   /***************************************************************************
   *                                                                          *

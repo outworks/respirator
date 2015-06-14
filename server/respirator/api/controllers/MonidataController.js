@@ -1,16 +1,13 @@
 /**
- * MemberController
+ * MonidataController
  *
- * @description :: Server-side logic for managing members
+ * @description :: Server-side logic for managing monidatas
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
 
-var crypto = require('crypto');
-var md5 = crypto.createHash('md5');
-
 module.exports = {
     'index':function(req,res){
-        res.view("member/list");
+        res.view("monidata/list");
     },
     'list':function(req,res){
         var q = req.param('sSearch');
@@ -23,17 +20,16 @@ module.exports = {
         if(!iDisplayLength){
             iDisplayLength = 20;
         }
-        var query = {sort:'id DESC',skip:iDisplayStart,limit:iDisplayLength};
+        var query = {skip:iDisplayStart,limit:iDisplayLength};
 
         if(q){
-            query.or = [{ username: {'contains':q} },
-                { nickname: {'contains':q} }];
+            query.or = [{ username: {'contains':q} }];
         }
-        Member.count(query).exec(function(err,count){
+        Monidata.count(query).exec(function(err,count){
             if(err){
                 res.next();
             }else{
-                Member.find(query).exec(function (err, list) {
+                Monidata.find(query).exec(function (err, list) {
                     console.log(list);
                     if(err){
                         res.next();

@@ -25,6 +25,14 @@ module.exports = {
         },phone:{
             type:'string',
             size:11
+        },
+        toJSON: function() {
+            var obj = this.toObject();
+            delete obj.updatedAt;
+            delete obj.createdAt;
+            delete obj.password;
+            delete obj.id;
+            return obj;
         }
     }
 };

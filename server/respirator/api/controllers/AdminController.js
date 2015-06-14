@@ -6,6 +6,10 @@
  */
 
 module.exports = {
+    'logout':function(req,res){
+        req.session.authenticated = false;
+        res.redirect('/login');
+    },
     'login':function(req,res){
         Admin.findOne({username:req.body.username,password:req.body.pwd}).exec(function(error,data){
             if(error){

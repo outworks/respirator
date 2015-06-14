@@ -50,5 +50,8 @@ module.exports.policies = {
     AdminController: {
         '*':'sessionAuth',
         login:'normal'
+    },
+    MemberController: {
+        'index':'sessionAuth'
     }
 };

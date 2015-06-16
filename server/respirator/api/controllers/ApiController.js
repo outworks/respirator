@@ -6,8 +6,24 @@
  */
 
 var crypto = require('crypto');
+var moment = require('moment');
 
 module.exports = {
+    'weather':function(req,res){
+        var type = req.body.type;
+        if(!type){
+            type = 'index_v';
+        }
+        var areaid = req.body.areaid;
+        var dateString = moment().format('YYYYMMDDHHmm');
+        var appid = '7fece56f0f406831';
+        var private_key = '0c2ead_SmartWeatherAPI_59571b1';
+        var tempurl = 'http://open.weather.com.cn/data/?areaid=' + areaid + '&type=' + type + '&date=' + dateString + '&appid=' + appid.substring(0,6);
+        var waiturl = 'http://open.weather.com.cn/data/?areaid=' + areaid + '&type=' + type + '&date=' + dateString + '&appid=' + appid;
+        var sign = crypto.createHmac('sha1',private_key).update(waiturl).digest().toString('base64');
+        var url = tempurl + '&key=' + encodeURIComponent(sign);
+        res.redirect(url);
+    },
     'login':function(req,res){
         var username = req.body.username;
         var password = req.body.pwd;

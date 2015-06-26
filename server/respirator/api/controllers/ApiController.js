@@ -91,6 +91,7 @@ module.exports = {
                         var nickname = req.body.nickname;
                         var sex = req.body.sex;
                         var birthday = req.body.birthday;
+                        var age = req.body.age;
                         var weight = req.body.weigth;
                         var height = req.body.height;
                         var phone = req.body.phone;
@@ -121,6 +122,9 @@ module.exports = {
                         }
                         if(phone){
                             member.phone = phone;
+                        }
+                        if(age){
+                            member.age = age;
                         }
                         Member.update({'mid':mid},member).exec(function(error,updated){
                             if(error){

@@ -37,11 +37,14 @@ module.exports = {
     },weight:{
         type:'float'
     },dataComplete:function(){
-        if((!this.birthday && (!this.age || this.age==0)) || !this.height || !this.weight){
+        if((!(this.birthday || (this.age && this.age>0)) || !this.height || !this.weight)){
             return false;
         }
         return true;
     },ageMath:function(){
+          if(this.age && this.age>0){
+              return this.age;
+          }
           var returnAge;
           var strBirthdayArr = this.birthday.split("-");
           var birthYear = parseInt(strBirthdayArr[0]);
@@ -101,11 +104,15 @@ module.exports = {
           delete obj.password;
           delete obj.id;
           obj.infoFlag = this.dataComplete()?1:0;
+          obj.defPef = this.defaultPef();
           return obj;
       },defaultPef: function() {
           var age = this.age;
           if(!age || age == 0){
               age = this.ageMath();
+          }
+          if(age == -1){
+              age = 40;//默认给个值
           }
           var PEF = 0;
           if(age <= 12){

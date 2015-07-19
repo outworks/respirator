@@ -21,15 +21,17 @@ module.exports = {
             iDisplayStart = 0;
         }
         if(!iDisplayLength){
-            iDisplayLength = 20;
+            iDisplayLength = 10;
         }
         var query = {sort:'id DESC',skip:iDisplayStart,limit:iDisplayLength};
-
+        var totalQuery = {};
         if(q){
             query.or = [{ username: {'contains':q} },
                 { nickname: {'contains':q} }];
+            totalQuery.or = [{ username: {'contains':q} },
+                { nickname: {'contains':q} }];
         }
-        Member.count(query).exec(function(err,count){
+        Member.count(totalQuery).exec(function(err,count){
             if(err){
                 res.next();
             }else{
@@ -38,7 +40,7 @@ module.exports = {
                     if(err){
                         res.next();
                     }else{
-                        res.json({"sEcho":sEcho,"iTotalRecords":count,"iTotalDisplayRecords":iDisplayLength,"aaData":list})
+                        res.json({"sEcho":sEcho,"iTotalDisplayRecords":count,"iDisplayLength":iDisplayLength,"aaData":list})
                     }
                 });
             }

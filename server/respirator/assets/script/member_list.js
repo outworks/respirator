@@ -7,6 +7,7 @@ function pageinit(){
         "bSearchable":true,
         "sAjaxSource": "/member/list",
         "sPaginationType": "bootstrap",
+        "bPaginate" : true,
         "iDisplayLength":10,
         "oLanguage": {
             "sLengthMenu": "_MENU_ records per page",
@@ -33,10 +34,16 @@ function pageinit(){
             "mDataProp" : "birthday",
             "sDefaultContent" : ""
         }, {
+            "mDataProp" : "age",
+            "sDefaultContent" : ""
+        }, {
             "mDataProp" : "height",
             "sDefaultContent" : ""
         }, {
             "mDataProp" : "weight",
+            "sDefaultContent" : ""
+        }, {
+            "mDataProp" : "defPef",
             "sDefaultContent" : ""
         }]
     });

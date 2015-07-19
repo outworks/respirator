@@ -21,11 +21,12 @@ module.exports = {
             iDisplayLength = 20;
         }
         var query = {skip:iDisplayStart,limit:iDisplayLength};
-
+        var totalQuery = {};
         if(q){
             query.or = [{ username: {'contains':q} }];
+            totalQuery.or = [{ username: {'contains':q} }];
         }
-        Monidata.count(query).exec(function(err,count){
+        Monidata.count(totalQuery).exec(function(err,count){
             if(err){
                 res.next();
             }else{
@@ -34,7 +35,7 @@ module.exports = {
                     if(err){
                         res.next();
                     }else{
-                        res.json({"sEcho":sEcho,"iTotalRecords":count,"iTotalDisplayRecords":iDisplayLength,"aaData":list})
+                        res.json({"sEcho":sEcho,"iTotalDisplayRecords":count,"iDisplayLength":iDisplayLength,"aaData":list})
                     }
                 });
             }

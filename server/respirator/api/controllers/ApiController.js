@@ -92,7 +92,7 @@ module.exports = {
                         var sex = req.body.sex;
                         var birthday = req.body.birthday;
                         var age = req.body.age;
-                        var weight = req.body.weigth;
+                        var weight = req.body.weight;
                         var height = req.body.height;
                         var phone = req.body.phone;
                         var member = data;
@@ -140,12 +140,12 @@ module.exports = {
             res.json({code:0,msg:'参数错误'});
         }
     },'dataCommit':function(req,res){
+        console.log('开始执行');
         var mid = req.body.mid;
         var pef = req.body.pef;
         var fev1 = req.body.fev1;
         var fvc = req.body.fvc;
         var level = req.body.level;
-        var age = req.body.age;
         var flag = true;
         var _data = {};
         if(!pef || !fev1 || !fvc ){
@@ -183,18 +183,10 @@ module.exports = {
                 level = undefined;
             }
         }
-        if(flag && age){
-            age = parseInt(age);
-            if(age != NaN){
-                _data.age = age;
-            }else{
-                age = undefined;
-            }
-        }
         if(flag){
             Member.findOne({mid:mid}).exec(function(error,data){
                 if(error){
-                    res.json({code:-1,msg:'出错了~'});
+                    res.json({code:-1,msg:'用户未找到~'});
                 } else{
                     if(!data){
                         res.json({code:0,msg:'该用户不存在'});
@@ -213,7 +205,7 @@ module.exports = {
                             var date = moment().format('YYYY-MM-DD');
                             DateMonidata.findOne({mid:mid,saveDate:date}).exec(function(error,datemonidata){
                                 if(error){
-                                    res.json({code:-1,msg:'出错了~'});
+                                    res.json({code:-1,msg:'当日数据查找出错了~'});
                                 }else{
                                     if(!datemonidata){
                                         var dateData = {};
@@ -221,12 +213,12 @@ module.exports = {
                                         dateData.username = data.username;
                                         DateMonidata.create(dateData).exec(function(error,_datemonidata){
                                             if(error){
-                                                res.json({code:-1,msg:'出错了~'});
+                                                res.json({code:-1,msg:'当日数据创建出错了~'});
                                             }else{
                                                 _data.dateOwner = _datemonidata.id;
                                                 Monidata.create(_data).exec(function(error,monidata){
                                                     if(error){
-                                                        res.json({code:-1,msg:'出错了~'});
+                                                        res.json({code:-1,msg:'单条数据创建失败~'});
                                                     }else{
                                                         res.json({code:1,msg:'保存成功',data:monidata});
                                                     }
@@ -237,7 +229,7 @@ module.exports = {
                                         _data.dateOwner = datemonidata.id;
                                         Monidata.create(_data).exec(function(error,monidata){
                                             if(error){
-                                                res.json({code:-1,msg:'出错了~'});
+                                                res.json({code:-1,msg:'单条数据创建出错了~'});
                                             }else{
                                                 res.json({code:1,msg:'保存成功',data:monidata});
                                             }

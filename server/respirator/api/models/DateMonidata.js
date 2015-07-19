@@ -7,7 +7,6 @@
 
 var moment = require('moment');
 module.exports = {
-
   attributes: {
       mid:{
           type:'integer'
@@ -15,8 +14,7 @@ module.exports = {
       username:{
           type:'string'
       },saveDate:{
-          type:'string',
-          unique:true
+          type:'string'
       },dataDetails:{
           collection: 'Monidata',
           via: 'dateOwner'

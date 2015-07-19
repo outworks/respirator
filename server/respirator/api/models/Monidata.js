@@ -32,11 +32,23 @@ module.exports = {
           model:'DateMonidata'
       },toJSON: function() {
           var obj = this.toObject();
+          if(obj.fev1){
+              var fev1 = obj.fev1;
+              obj.fev1 = this.changeTwoDecimal(obj.fev1);
+          }
           delete obj.updatedAt;
           delete obj.createdAt;
           delete obj.id;
           delete obj.dateOwner;
           return obj;
+      },changeTwoDecimal:function (x){
+          var f_x = parseFloat(x);
+          if (isNaN(f_x))
+          {
+              return false;
+          }
+          var f_x = Math.round(x*100)/100;
+          return f_x;
       }
   },
     beforeCreate: function (values, cb) {

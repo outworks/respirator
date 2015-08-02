@@ -24,6 +24,12 @@ module.exports = {
       level:{
           type:'integer'
       },
+      inputType:{
+          type:'integer'
+      },
+      otherType:{
+          type:'integer'
+      },
       username:{
           type:'string'
       },saveTime:{

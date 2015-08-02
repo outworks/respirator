@@ -146,9 +146,11 @@ module.exports = {
         var fev1 = req.body.fev1;
         var fvc = req.body.fvc;
         var level = req.body.level;
+        var inputType = req.body.inputType;
+        var otherType = req.body.otherType;
         var flag = true;
         var _data = {};
-        if(!pef || !fev1 || !fvc ){
+        if(!pef || !fev1 || !fvc || !inputType){
             flag = false;
         }
         if(flag){
@@ -168,9 +170,25 @@ module.exports = {
             }
         }
         if(flag){
-            fvc = parseInt(fvc);
-            if(fvc != NaN){
-                _data.fvc = fvc;
+            fev1 = parseFloat(fev1);
+            if(fev1 != NaN){
+                _data.fev1 = fev1;
+            }else{
+                flag = false;
+            }
+        }
+        if(flag){
+            inputType = parseInt(inputType);
+            if(inputType != NaN){
+                _data.inputType = inputType;
+            }else{
+                flag = false;
+            }
+        }
+        if(flag && otherType){
+            otherType = parseInt(otherType);
+            if(otherType != NaN){
+                _data.otherType = otherType;
             }else{
                 flag = false;
             }
@@ -247,6 +265,7 @@ module.exports = {
         }
     },'dateDatas':function(req,res){
         var mid = req.body.mid;
+        var inputType = req.body.inputType;
         var pageIndex = req.body.page;
         if(!pageIndex){
             pageIndex = 1;
@@ -263,6 +282,9 @@ module.exports = {
         var query = {sort:'id DESC',skip:skipIndex,limit:pagesize};
         if(mid){
             query.where = { mid: mid };
+        }
+        if(inputType){
+            query.where.inputType = inputType;
         }
         DateMonidata.find(query).populate('dataDetails').exec(function (err, list) {
             if(err){

@@ -130,7 +130,7 @@ module.exports = {
                             if(error){
                                 res.json({code:-1,msg:'出错了~'});
                             }else{
-                                res.json({code:1,msg:'更新成功',data:updated});
+                                res.json({code:1,msg:'更新成功',data:updated[0]});
                             }
                         });
                     }
@@ -170,9 +170,9 @@ module.exports = {
             }
         }
         if(flag){
-            fev1 = parseFloat(fev1);
-            if(fev1 != NaN){
-                _data.fev1 = fev1;
+            fvc = parseFloat(fvc);
+            if(fvc != NaN){
+                _data.fvc = fvc;
             }else{
                 flag = false;
             }
@@ -284,15 +284,23 @@ module.exports = {
             query.where = { mid: mid };
         }
         if(inputType){
-            query.where.inputType = inputType;
+            DateMonidata.find(query).populate('dataDetails',{inputType: inputType}).exec(function (err, list) {
+                if(err){
+                    res.json({code:-1,msg:'出错了~'});
+                }else{
+                    res.json({code:1,data:list});
+                }
+            });
+        }else{
+            DateMonidata.find(query).populate('dataDetails').exec(function (err, list) {
+                if(err){
+                    res.json({code:-1,msg:'出错了~'});
+                }else{
+                    res.json({code:1,data:list});
+                }
+            });
         }
-        DateMonidata.find(query).populate('dataDetails').exec(function (err, list) {
-            if(err){
-                res.json({code:-1,msg:'出错了~'});
-            }else{
-                res.json({code:1,data:list});
-            }
-        });
+
     }
 
 

@@ -21,11 +21,11 @@ module.exports.sockets = {
   * automatically.                                                           *
   *                                                                          *
   ***************************************************************************/
-  onConnect: function(session, socket) {
-
-    // By default, do nothing.
-
-  },
+  //onConnect: function(session, socket) {
+  //
+  //  // By default, do nothing.
+  //
+  //},
 
 
   /***************************************************************************
